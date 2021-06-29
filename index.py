@@ -1,9 +1,18 @@
-import requests
-from bs4 import BeautifulSoup as bs
+class Score:
+    def __init__(self):
+        self.name = 'Unknown'
+        self.math = 0
+        self.english = 0
+        self.japanese = 0
 
-github_user = input('input Github User: ')
-url = 'https://github.com/'+github_user
-r = requests.get(url)
-soup = bs(r.content, 'html.parser')
-profile_image = soup.find('img', {'alt' : 'Avatar'})['src']
-print(profile_image)
+    def get_average(self):
+        return (self.math + self.english + self.japanese)/3
+
+taro = Score()
+taro.name = 'taro'
+taro.math = 60
+taro.english = 70
+taro.japanese = 80
+
+ave = taro.get_average()
+print(ave)
